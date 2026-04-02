@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schildersbedrijf L. Muyres</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F7F3EE;
+    --warm-white: #FDFAF7;
+    --charcoal: #1E1E1E;
+    --charcoal-mid: #2E2E2E;
+    --terracotta: #C0603A;
+    --terracotta-dark: #A3502F;
+    --amber-light: #F2DEC4;
+    --stone: #8A8078;
+    --stone-light: #C8BFB5;
+    --border: #E2D9CF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(253,250,247,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s ease;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    letter-spacing: 0.01em;
+  }
+
+  .nav-logo span { color: var(--terracotta); }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--stone);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--charcoal); }
+
+  .nav-cta {
+    background: var(--terracotta);
+    color: white !important;
+    padding: 10px 22px;
+    border-radius: 2px;
+    font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--terracotta-dark) !important; color: white !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+
+  .hero-left {
+    background: var(--charcoal);
+    padding: 80px 60px 80px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(192,96,58,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 24px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 32px; height: 1px;
+    background: var(--terracotta);
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 4vw, 4rem);
+    font-weight: 700;
+    color: white;
+    line-height: 1.1;
+    margin-bottom: 28px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--stone-light);
+    line-height: 1.7;
+    max-width: 380px;
+    margin-bottom: 44px;
+    font-weight: 300;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--terracotta);
+    color: white;
+    padding: 16px 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    width: fit-content;
+  }
+
+  .btn-primary:hover {
+    background: var(--terracotta-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(192,96,58,0.3);
+  }
+
+  .btn-primary svg { transition: transform 0.2s; }
+  .btn-primary:hover svg { transform: translateX(4px); }
+
+  .hero-right {
+    background: var(--cream);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.06;
+    background-image: repeating-linear-gradient(
+      0deg, var(--charcoal) 0px, var(--charcoal) 1px, transparent 1px, transparent 40px
+    ), repeating-linear-gradient(
+      90deg, var(--charcoal) 0px, var(--charcoal) 1px, transparent 1px, transparent 40px
+    );
+  }
+
+  .hero-badge {
+    position: absolute;
+    top: 60px; left: 40px;
+    background: white;
+    border: 1px solid var(--border);
+    padding: 20px 24px;
+    border-radius: 4px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+
+  .hero-badge .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--terracotta);
+    line-height: 1;
+  }
+
+  .hero-badge .label {
+    font-size: 0.75rem;
+    color: var(--stone);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+  }
+
+  .hero-visual {
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, var(--charcoal-mid) 0%, #3A3A3A 100%);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-visual::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 50%;
+    background: linear-gradient(to top, rgba(192,96,58,0.3), transparent);
+  }
+
+  .hero-visual-icon {
+    font-size: 5rem;
+    filter: grayscale(1) brightness(0.4);
+  }
+
+  /* SECTION BASE */
+  section { position: relative; }
+
+  .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .section-tag::before {
+    content: '';
+    width: 20px; height: 1px;
+    background: var(--terracotta);
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--charcoal);
+  }
+
+  /* OVER ONS */
+  .about {
+    padding: 120px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    background: var(--warm-white);
+  }
+
+  .about-left {}
+
+  .about-desc {
+    font-size: 1.05rem;
+    color: var(--stone);
+    line-height: 1.8;
+    margin-top: 24px;
+    font-weight: 300;
+  }
+
+  .about-values {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .value-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background: var(--cream);
+    border-radius: 4px;
+    border: 1px solid var(--border);
+  }
+
+  .value-icon {
+    width: 32px; height: 32px;
+    background: var(--amber-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  .value-text {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    line-height: 1.4;
+  }
+
+  .about-right {
+    position: relative;
+  }
+
+  .about-visual {
+    background: var(--charcoal);
+    border-radius: 4px;
+    aspect-ratio: 4/5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(192,96,58,0.2) 0%, transparent 60%);
+  }
+
+  .about-accent {
+    position: absolute;
+    bottom: -20px; right: -20px;
+    width: 120px; height: 120px;
+    background: var(--terracotta);
+    border-radius: 2px;
+    z-index: -1;
+  }
+
+  .about-name-card {
+    position: absolute;
+    bottom: 24px; left: -24px;
+    background: white;
+    padding: 16px 20px;
+    border-radius: 4px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    border-left: 3px solid var(--terracotta);
+  }
+
+  .about-name-card .name { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; }
+  .about-name-card .title { font-size: 0.75rem; color: var(--stone); text-transform: uppercase; letter-spacing: 0.1em; }
+
+  /* DIENSTEN */
+  .services {
+    padding: 120px 80px;
+    background: var(--charcoal);
+  }
+
+  .services-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 64px;
+  }
+
+  .services-header h2 { color: white; }
+  .services-header .section-tag { color: var(--terracotta); }
+  .services-header .section-tag::before { background: var(--terracotta); }
+
+  .services-sub {
+    font-size: 0.95rem;
+    color: var(--stone-light);
+    max-width: 280px;
+    text-align: right;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .service-card {
+    background: var(--charcoal-mid);
+    padding: 40px 32px;
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: all 0.3s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--terracotta);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: left;
+  }
+
+  .service-card:hover { background: #2A2A2A; transform: translateY(-4px); }
+  .service-card:hover::after { transform: scaleX(1); }
+
+  .service-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+
+  .service-icon {
+    width: 44px; height: 44px;
+    background: rgba(192,96,58,0.15);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+  }
+
+  .service-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 12px;
+  }
+
+  .service-desc {
+    font-size: 0.85rem;
+    color: var(--stone-light);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* WERKWIJZE */
+  .process {
+    padding: 120px 80px;
+    background: var(--cream);
+  }
+
+  .process-header { text-align: center; margin-bottom: 80px; }
+  .process-header .section-tag { justify-content: center; }
+  .process-header .section-tag::before { display: none; }
+  .process-header .section-tag::after { content: ''; width: 20px; height: 1px; background: var(--terracotta); }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: calc(100%/6);
+    right: calc(100%/6);
+    height: 1px;
+    background: var(--stone-light);
+    z-index: 0;
+  }
+
+  .step {
+    text-align: center;
+    padding: 0 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-num {
+    width: 80px; height: 80px;
+    background: var(--charcoal);
+    color: white;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 28px;
+    border: 4px solid var(--cream);
+    box-shadow: 0 0 0 1px var(--stone-light);
+    transition: all 0.3s;
+  }
+
+  .step:hover .step-num {
+    background: var(--terracotta);
+    box-shadow: 0 0 0 1px var(--terracotta), 0 8px 24px rgba(192,96,58,0.3);
+  }
+
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    margin-bottom: 12px;
+  }
+
+  .step-desc {
+    font-size: 0.88rem;
+    color: var(--stone);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* REVIEWS */
+  .reviews {
+    padding: 120px 80px;
+    background: var(--warm-white);
+  }
+
+  .reviews-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .reviews-header .section-tag { justify-content: center; }
+  .reviews-header .section-tag::before { display: none; }
+  .reviews-header .section-tag::after { content: ''; width: 20px; height: 1px; background: var(--terracotta); }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .review-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 32px;
+    border-radius: 4px;
+    transition: all 0.3s;
+    position: relative;
+  }
+
+  .review-card:hover {
+    border-color: var(--stone-light);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+    transform: translateY(-4px);
+  }
+
+  .review-card:nth-child(4),
+  .review-card:nth-child(5) {
+    grid-column: span 1;
+  }
+
+  .reviews-grid .review-card:nth-child(4) { grid-column: 1 / 2; }
+  .reviews-grid .review-card:nth-child(5) { grid-column: 2 / 3; }
+
+  .review-stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 20px;
+    color: var(--terracotta);
+  }
+
+  .review-text {
+    font-size: 0.95rem;
+    color: var(--charcoal);
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+
+  .review-text::before { content: '\201C'; }
+  .review-text::after { content: '\201D'; }
+
+  .review-author {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--stone);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .review-quote {
+    position: absolute;
+    top: 20px; right: 24px;
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: var(--border);
+    line-height: 1;
+    font-weight: 700;
+  }
+
+  /* CONTACT */
+  .contact {
+    padding: 120px 80px;
+    background: var(--charcoal);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-left {}
+  .contact-left h2 { color: white; }
+  .contact-left .section-tag { color: var(--terracotta); }
+  .contact-left .section-tag::before { background: var(--terracotta); }
+
+  .contact-desc {
+    font-size: 0.95rem;
+    color: var(--stone-light);
+    line-height: 1.7;
+    margin-top: 20px;
+    font-weight: 300;
+  }
+
+  .contact-info {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--stone-light);
+    font-size: 0.9rem;
+  }
+
+  .contact-item-icon {
+    width: 40px; height: 40px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+
+  .form-group label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--stone);
+    font-weight: 500;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 14px 16px;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: var(--stone); }
+
+  .form-group input:focus,
+  .form-group textarea:focus { border-color: var(--terracotta); }
+
+  .form-group textarea { min-height: 120px; }
+
+  .btn-submit {
+    background: var(--terracotta);
+    color: white;
+    padding: 16px 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.25s;
+    margin-top: 8px;
+  }
+
+  .btn-submit:hover {
+    background: var(--terracotta-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(192,96,58,0.3);
+  }
+
+  /* FOOTER */
+  footer {
+    background: #141414;
+    padding: 32px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .footer-logo span { color: var(--terracotta); }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.2);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-left > * {
+    animation: fadeUp 0.7s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-eyebrow { animation-delay: 0.1s; }
+  .hero-title { animation-delay: 0.25s; }
+  .hero-sub { animation-delay: 0.4s; }
+  .btn-primary { animation-delay: 0.55s; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 60px 24px; }
+
+    .about { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
+    .about-right { display: none; }
+    .about-values { grid-template-columns: 1fr; }
+
+    .services { padding: 60px 24px; }
+    .services-header { flex-direction: column; gap: 16px; align-items: flex-start; }
+    .services-header .services-sub { text-align: left; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+
+    .process { padding: 60px 24px; }
+    .process-steps { grid-template-columns: 1fr; }
+    .process-steps::before { display: none; }
+
+    .reviews { padding: 60px 24px; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .reviews-grid .review-card:nth-child(4),
+    .reviews-grid .review-card:nth-child(5) { grid-column: 1; }
+
+    .contact { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
+    .form-row { grid-template-columns: 1fr; }
+
+    footer { flex-direction: column; gap: 12px; padding: 24px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">L. <span>Muyres</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">Over ons</a></li>
+    <li><a href="#services">Diensten</a></li>
+    <li><a href="#process">Werkwijze</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Offerte</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Schildersbedrijf Amsterdam</div>
+    <h1 class="hero-title">Vakwerk dat<br><em>voor zichzelf</em><br>spreekt.</h1>
+    <p class="hero-sub">Binnen- en buitenschilderwerk door een vakman die meedenkt, afspraken nakomt en een eerlijke prijs hanteert.</p>
+    <a href="#contact" class="btn-primary">
+      Vraag een offerte aan
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-pattern"></div>
+    <div class="hero-badge">
+      <div class="num">10+</div>
+      <div class="label">Jaar ervaring</div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-visual-icon">🖌️</div>
+    </div>
+  </div>
+</section>
+
+<!-- OVER ONS -->
+<section class="about" id="about">
+  <div class="about-left">
+    <div class="section-tag">Over ons</div>
+    <h2>Lorenzo Muyres,<br>vakman met passie.</h2>
+    <p class="about-desc">Al meer dan tien jaar zet Lorenzo Muyres zijn vakmanschap in voor klanten in de regio. Geen bouwbedrijf met anonieme gezichten — maar een schilder die persoonlijk betrokken is, met je meedenkt en trots is op elk opgeleverd project.</p>
+    <p class="about-desc" style="margin-top: 12px;">Of het nu gaat om een kamer opfrissen, een complete buitenschilderbeurt of een renovatieproject — Lorenzo levert kwaliteit die je ziet én voelt.</p>
+    <div class="about-values">
+      <div class="value-item">
+        <div class="value-icon">✓</div>
+        <div class="value-text">Eerlijke, transparante prijs</div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">✓</div>
+        <div class="value-text">Afspraken nakomen</div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">✓</div>
+        <div class="value-text">Denkt actief mee</div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">✓</div>
+        <div class="value-text">Goede communicatie</div>
+      </div>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="about-accent"></div>
+    <div class="about-visual">
+      <span style="font-size:5rem;filter:brightness(0.3);">🖌️</span>
+    </div>
+    <div class="about-name-card">
+      <div class="name">Lorenzo Muyres</div>
+      <div class="title">Vakman Schilder</div>
+    </div>
+  </div>
+</section>
+
+<!-- DIENSTEN -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div>
+      <div class="section-tag">Wat wij doen</div>
+      <h2>Onze diensten</h2>
+    </div>
+    <p class="services-sub">Professioneel schilderwerk voor elk project, groot of klein.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-icon">🏠</div>
+      <div class="service-name">Binnenschilderwerk</div>
+      <p class="service-desc">Muren, plafonds, deuren en kozijnen. Nette afwerking, stofvrij werken en minimale overlast.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-icon">🏗️</div>
+      <div class="service-name">Buitenschilderwerk</div>
+      <p class="service-desc">Gevels, kozijnen, houtrot herstel en bescherming tegen weersinvloeden. Duurzaam en vakkundig.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-icon">🔨</div>
+      <div class="service-name">Renovatie & Opknappen</div>
+      <p class="service-desc">Van verouderde ruimtes naar frisse interieurs. Voorbereidend werk, spackelen en eindlakken.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-icon">📄</div>
+      <div class="service-name">Behangen</div>
+      <p class="service-desc">Alle soorten behang, strak aangebracht. Van klassiek tot modern — het past altijd perfect.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WERKWIJZE -->
+<section class="process" id="process">
+  <div class="process-header">
+    <div class="section-tag">Hoe het werkt</div>
+    <h2>Van idee naar resultaat<br>in drie stappen.</h2>
+  </div>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-title">Afspraak</div>
+      <p class="step-desc">Lorenzo komt langs, bekijkt het werk en luistert naar jouw wensen. Persoonlijk contact van begin tot eind.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-title">Offerte</div>
+      <p class="step-desc">Je ontvangt een heldere, eerlijke offerte zonder verborgen kosten. Geen verassingen achteraf.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-title">Uitvoering</div>
+      <p class="step-desc">Het werk wordt vakkundig en netjes uitgevoerd. Op tijd, zoals afgesproken, en met een perfecte afwerking.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="reviews-header">
+    <div class="section-tag">Ervaringen</div>
+    <h2>Wat klanten zeggen.</h2>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Lorenzo denkt met je mee, levert goed werk, komt afspraken na en rekent een eerlijke prijs. Dat is een gouden combinatie!</p>
+      <div class="review-author">— R.</div>
+    </div>
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Super vriendelijke service, goede communicatie en afstemming qua tijden, top resultaat!</p>
+      <div class="review-author">— Lotte T.</div>
+    </div>
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Reliable, efficient, and professional throughout the entire renovation project.</p>
+      <div class="review-author">— Niccolò D.</div>
+    </div>
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Goed bedrijf met echte vakmensen, zeker een aanrader.</p>
+      <div class="review-author">— Mark D.</div>
+    </div>
+    <div class="review-card">
+      <div class="review-quote">"</div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Rap en efficiënt gewerkt, prettig gecommuniceerd.</p>
+      <div class="review-author">— Phil H.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-left">
+    <div class="section-tag">Contact</div>
+    <h2>Klaar voor een<br>nieuw project?</h2>
+    <p class="contact-desc">Stuur een bericht of bel direct. Lorenzo reageert snel en denkt graag vrijblijvend mee over jouw project.</p>
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-item-icon">📞</div>
+        <span>+31 6 00 000 000</span>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">✉️</div>
+        <span>info@schildersmuyres.nl</span>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">📍</div>
+        <span>Amsterdam & omgeving</span>
+      </div>
+    </div>
+  </div>
+  <div class="contact-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label>Naam</label>
+        <input type="text" placeholder="Jouw naam">
+      </div>
+      <div class="form-group">
+        <label>Telefoon</label>
+        <input type="tel" placeholder="+31 6 ...">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>E-mail</label>
+      <input type="email" placeholder="jouw@email.nl">
+    </div>
+    <div class="form-group">
+      <label>Bericht</label>
+      <textarea placeholder="Omschrijf kort je project..."></textarea>
+    </div>
+    <button class="btn-submit" onclick="handleSubmit(event)">
+      Verstuur aanvraag
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Schildersbedrijf L. <span>Muyres</span></div>
+  <div class="footer-copy">© 2025 Schildersbedrijf L. Muyres — Alle rechten voorbehouden</div>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target;
+    btn.textContent = '✓ Verstuurd!';
+    btn.style.background = '#2E7D32';
+    setTimeout(() => {
+      btn.innerHTML = 'Verstuur aanvraag <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+      btn.style.background = '';
+    }, 3000);
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.style.opacity = '1';
+        el.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .step, .review-card, .value-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
